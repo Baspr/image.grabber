@@ -66,7 +66,7 @@ class App extends Homey.App {
 				const myImage = await this.homey.images.createImage();
 				await myImage.setStream(async (stream) => {
 
-					headers.set('Authorization', 'Basic ' + Buffer.from(args.username + ":" + args.password).toString('base64'));
+					headers.set('Authorization', 'Digest ' + Buffer.from(args.username + ":" + args.password).toString('base64'));
 
 					const res = await fetch(args.url, {headers: headers});
 					if(!res.ok)
